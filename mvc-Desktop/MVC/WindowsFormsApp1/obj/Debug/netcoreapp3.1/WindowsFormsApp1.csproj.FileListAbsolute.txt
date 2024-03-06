@@ -1,0 +1,8 @@
+D:\adobe\Jessica\Fatec\MVC\WindowsFormsApp1\obj\Debug\netcoreapp3.1\WindowsFormsApp1.Form1.resources
+D:\adobe\Jessica\Fatec\MVC\WindowsFormsApp1\obj\Debug\netcoreapp3.1\WindowsFormsApp1.View.AmigoHeroiView.resources
+D:\adobe\Jessica\Fatec\MVC\WindowsFormsApp1\obj\Debug\netcoreapp3.1\WindowsFormsApp1.View.HeroiView.resources
+D:\adobe\Jessica\Fatec\MVC\WindowsFormsApp1\obj\Debug\netcoreapp3.1\WindowsFormsApp1.View.VilaoView.resources
+D:\adobe\Jessica\Fatec\MVC\WindowsFormsApp1\obj\Debug\netcoreapp3.1\WindowsFormsApp1.csproj.GenerateResource.cache
+D:\adobe\Jessica\Fatec\MVC\WindowsFormsApp1\obj\Debug\netcoreapp3.1\WindowsFormsApp1.AssemblyInfoInputs.cache
+D:\adobe\Jessica\Fatec\MVC\WindowsFormsApp1\obj\Debug\netcoreapp3.1\WindowsFormsApp1.AssemblyInfo.cs
+D:\adobe\Jessica\Fatec\MVC\WindowsFormsApp1\obj\Debug\netcoreapp3.1\WindowsFormsApp1.csproj.CoreCompileInputs.cache
