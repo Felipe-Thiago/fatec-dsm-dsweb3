@@ -2,47 +2,55 @@ const express = require('express')
 const app = express()
 const port = 3000
 
-app.use(express.json())
+
 
 //let names = []
-let notas = []
-var quantidade = 0;
-var media = 0;
-var maior = 0;
-var menor = 0;
-var soma = 0;    
+let items = []
+const veiculos = [
+    {id: 1, name: "Fiat"},
+    {id: 2, name: "Celta"}, 
+    {id: 3, name: "Marea"}
+];
 
 app.get('/', (req, res) => {
-    //res.json(names)
-    res.json(`Quantidade de alunos: ${quantidade}, Média: ${media}, Notas: ${notas}, Abaixo da média: ${menor}, Acima da média: ${maior}`);
+    res.json(items)
 })
 
-app.post('/', (req, res) => {
-    //names.push(req.body.name)
-    //res.send(`Lendo nome: ${req.body.name}`)
-
-    //CalculaTemperatura(req.body.type, req.body.temperature);
-    
-    //CalculaMediaNotas(req.body.nota);
-    notas.push(req.body.nota);
-    res.send(`Lendo nota: ${req.body.nota}`);
-
-    quantidade += 1;
-    soma = soma + Number(req.body.nota);
-
-    if (Number(req.body.nota) >= 60){
-        maior += 1;
-    } else if(Number(req.body.nota) < 60){
-        menor += 1;
-    }
-
-    media = soma/quantidade;
-
+app.post('/', (req, res)=> {
+    items.push(req.body.name)
+    res.send(`Post ${req.body.name}`)
 })
 
-app.listen(port, () => {
+app.put('/', (req, res)=> {
+    const index = veiculos.findIndex(x => x.id == req.query.id);
+    veiculos[index] = {id: req.query.id, name: req.body.name}
+    res.send(JSON.stringify(veiculos))
+})
+
+app.delete('/', (req, res) => {
+    const index = veiculos.findIndex(x => x.id == req.query.id);
+    veiculos.splice(index, i);
+    res.send(JSON.stringify(veiculos))
+})
+
+app.listen(port, () =>{
     console.log(`Example app listening on port ${port}`)
 })
+
+
+
+
+
+//exercícios aula 26/04
+app.post('/calculaMedias', (req, res) => {
+   res.send(CalculaMediaNotasCorrecao(req.query.total, req.body.grades))
+})
+
+app.post('/converteTemperatura', (req, res) =>{
+    CalculaTemperatura(req.body.type, req.body.temperature);
+})
+
+
 
 function CalculaTemperatura(type, temperature){
     switch(type){
@@ -61,18 +69,15 @@ function CalculaTemperatura(type, temperature){
     }
 }
 
-function CalculaMediaNotas(nota){
-    
-    notas.push(nota);
-    quantidade =+ 1;
+//correção
+function CalculaMediaNotasCorrecao(total, nota){
+    if(total == nota.length){
+        let soma = nota.reduce((acum, x) => acum + x, 0)
+        let media = soma / total
+        let abaixo = nota.filter(x => x < 6);
+        let acima = nota.filter(x => x >= 6);
 
-    if(nota >= 60){
-        maior =+ 1;
-    } else if(nota < 60){
-        menor =+ 1;
+        return `Média: ${media} \n; Abaixo da Média: ${abaixo.length}; Acima da Média: ${acima.length}`
     }
-
-    var media = notas.length/quantidade;
-    return media;
-    
+    return "A média total não bate com a quantidade de notas"
 }
