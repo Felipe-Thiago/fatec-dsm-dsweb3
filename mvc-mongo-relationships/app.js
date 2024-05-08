@@ -4,11 +4,13 @@ const app = express()
 const port = 3000
 
 const userRoute = require('./src/routes/userRoute')
+const projectRoute = require('./src/routes/projectRoute')
 app.use(userRoute)
+app.use(projectRoute)
 
 //Configurando a conexão
 const mongoose = require('mongoose')
-let url = 'mongodb+srv://felipesilva581:F4t3cV0t0r4nt1m@fatecvotorantim.kzodpb6.mongodb.net/?retryWrites=true&w=majority&appName=FatecVotorantim'
+let url = 'mongodb://127.0.0.1:27017/'
 let mongoDb = process.env.MONGODB_URI || url
 mongoose.connect(mongoDb)
 mongoose.Promise = global.Promise
